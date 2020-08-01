@@ -7,7 +7,12 @@ const templateRoute = require('../routes/template');
 require('dotenv').config();
 const server = express();
 server.use(helmet());
-server.use(cors());
+server.use(cors({
+  origin: [
+    'http://localhost:3000',
+    'https://labs20d8picker.netlify.app'
+  ]
+}));
 server.use(express.json());
 
 server.use('/api/template', templateRoute);
